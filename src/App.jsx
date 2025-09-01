@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './App.module.css';
 import poweredImagem from './assets/powered.png';
 
+import { levels, calculateImc} from './helpers/imc';
+
 const App = () => {
   const [heightField, setHeightField] = React.useState(0);
   const [weightField, setWeightField] = React.useState(0);
@@ -30,7 +32,7 @@ const App = () => {
 
         <input 
         type="number"
-        placeholder="Digite sua altura. Ex: 1.5 (em metros)"
+        placeholder="Digite sua altura. Ex: 1.75 (em metros)"
         value={heightField > 0 ? heightField : ''}
         onChange={event => setHeightField(parseFloat(event.target.value))}
         />
@@ -46,7 +48,11 @@ const App = () => {
       </div>
 
        <div className={styles.rightSide}>
-        <p>cont 2</p>
+        <div className={styles.grid}> 
+              {levels.map((item, key) => {
+                <div key={key}>{item.title}</div>  
+              })}
+        </div>
       </div>
 
     </div>
