@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './App.module.css';
 import poweredImagem from './assets/powered.png';
+import {GridItem} from './components/gridItem'
 
-import { levels, calculateImc} from './helpers/imc';
+import { levels, calculateImc} from './helpers/imc.ts';
 
 const App = () => {
   const [heightField, setHeightField] = React.useState(0);
@@ -27,7 +28,7 @@ const App = () => {
     <div className={styles.container}>
 
       <div className={styles.leftSide}>
-        <h1>Calcule seu IMC AGORA!</h1>
+        <h1>Calcule seu <strong>IMC</strong></h1>
         <p>O Índice de Massa Corporal (IMC) é uma medida internacionalmente reconhecida que auxilia na avaliação do estado nutricional de uma pessoa, sendo um importante indicador de saúde.</p> 
 
         <input 
@@ -49,9 +50,9 @@ const App = () => {
 
        <div className={styles.rightSide}>
         <div className={styles.grid}> 
-              {levels.map((item, key) => {
-                <div key={key}>{item.title}</div>  
-              })}
+              {levels.map((item, key) => (
+                <GridItem key={key} item={item} /> 
+              ))}
         </div>
       </div>
 
